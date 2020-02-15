@@ -4,9 +4,9 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const WebpackConfig = require('./webpack.config')
-
 const app = express()
 const compiler = webpack(WebpackConfig)
+const routerApp = require('./router')
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: '/__build__/',
@@ -25,15 +25,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 /* 路由express */
 const router = express.Router()
+routerApp(router)
 
-router.get('/simple/get', function(req, res) {
-  res.json({
-    msg: `hello world`
-  })
-})
-
+/* 服务器data */
 app.use(router)
-
 
 const port = 8085
 // const port = process.env.PORT || 8082
