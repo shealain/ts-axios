@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig } from '../../src/index'
-import { METHODS } from 'http'
 
 axios({
   url: '/extend/post',

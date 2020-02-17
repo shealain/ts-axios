@@ -70,4 +70,21 @@ module.exports = function (router) {
     router.patch('/extend/patch', function (req, res) {
         res.json(req.body)
     })
+    /* interceptor拦截器 */
+    router.get('/interceptor/get', function (req, res) {
+        res.json(req.body)
+    })
+    /* config默认配置 */
+    router.post('/config/post', function (req, res) {
+        res.json(req.body)
+    })
+    /* cancel取消请求 */
+    router.get('/cancel/get',function(req,res){
+        res.json({
+            name:1111
+        })
+    })
+    router.post('/cancel/post',function(req,res){
+        res.json(req.body)
+    })
 }
